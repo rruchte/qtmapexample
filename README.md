@@ -6,9 +6,7 @@
 
 ## Embed and interact with a Qt Location Open Street Map using QQuickWidget
 
-<div style="text-align: center;">
 ![Alt text](/images/screenshot.png?raw=true "Screenshot")
-</div>
 
 #### Demonstrated Capabilities
 * Embed a QML map in a MainWindow
