@@ -1,0 +1,7 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+    <qresource prefix="/">
+        <file compress="1" compress-algo="zstd">map.qml</file>
+        <file>images/map-marker.svg</file>
+    </qresource>
+</RCC>
