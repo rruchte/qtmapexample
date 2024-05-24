@@ -31,9 +31,7 @@ Map {
 
     function setCenterPosition(lat, lng)
     {
-        pan(latitude - lat, longitude - lng);
-        latitude = lat;
-        longitude = lng;
+        root.center = QtPositioning.coordinate(lat, lng);
     }
 
     function setZoom(zoom)
