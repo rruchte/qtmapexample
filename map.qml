@@ -49,6 +49,34 @@ Map {
 
         setCenterPosition(lat, lng);
         zoomLevel = 10
+
+        // When the second marker is added, draw a line between the two
+        if(mapItems.length === 2)
+        {
+            addPolyline(QtPositioning.coordinate(mapItems[0].coordinate.latitude, mapItems[0].coordinate.longitude), QtPositioning.coordinate(mapItems[1].coordinate.latitude, mapItems[1].coordinate.longitude));
+        }
+
+        // Automatically pan and zoom so that all markers are visible
+        if(mapItems.length > 1)
+        {
+            fitViewportToVisibleMapItems();
+        }
+
+    }
+
+    // Add a line to the map
+    function addPolyline(coord1, coord2)
+    {
+        // Instantiate our simple polyline component, pass our two coordinates in the path property
+        var item = polyline.createObject(root, {
+            path: [
+                coord1,
+                coord2
+            ]
+        });
+
+        // Add the polyline instance to the map
+        addMapItem(item);
     }
 
     // Define our map marker component
@@ -58,8 +86,8 @@ Map {
         MapQuickItem
         {
             id: markerImg
-            anchorPoint.x: image.width / 4
-            anchorPoint.y: image.height
+            anchorPoint.x: image.width / 2 // This will center the marker on the longitude
+            anchorPoint.y: image.height // This will place the tip of the marker on the latitude
             coordinate: position
             sourceItem: Image {
                 id: image
@@ -70,6 +98,17 @@ Map {
                 smooth: true
                 antialiasing: true
             }
+        }
+    }
+
+    // Define our polyline component
+    Component
+    {
+        id: polyline
+        MapPolyline {
+            id: polylineInstance
+            line.width: 2
+            line.color: 'green'
         }
     }
 

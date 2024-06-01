@@ -40,6 +40,11 @@ mainwindow::mainwindow(QWidget *parent) :
 	QTimer::singleShot( 10000, this, [this](){
 		emit addLocationMarker(35.2527373,-75.5274529);
 	});
+
+	// Add a second marker, the map will draw a line between the two
+	QTimer::singleShot( 12500, this, [this](){
+		emit addLocationMarker(36.3766481,-75.8332807);
+	});
 }
 
 mainwindow::~mainwindow(){}
